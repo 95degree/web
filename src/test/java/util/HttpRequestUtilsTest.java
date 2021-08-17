@@ -13,25 +13,25 @@ public class HttpRequestUtilsTest {
     public void parseQueryString() {
         String queryString = "userId=javajigi";
         Map<String, String> parameters = HttpRequestUtils.parseQueryString(queryString);
-        assertThat(parameters.get("userId"), is("javajigi"));
-        assertThat(parameters.get("password"), is(nullValue()));
+        assertThat(parameters.get("userId")).isEqualTo("javajigi");
+        assertThat(parameters.get("password")).isNull();
 
-        queryString = "userId=javajigi&password=password2";
+        queryString= "userId=javajigi&password=password2";
         parameters = HttpRequestUtils.parseQueryString(queryString);
-        assertThat(parameters.get("userId"), is("javajigi"));
-        assertThat(parameters.get("password"), is("password2"));
+        assertThat(parameters.get("userId")).isEqualTo("javajigi");
+        assertThat(parameters.get("password")).isEqualTo("password2");
     }
 
     @Test
     public void parseQueryString_null() {
         Map<String, String> parameters = HttpRequestUtils.parseQueryString(null);
-        assertThat(parameters.isEmpty(), is(true));
+        assertThat(parameters.isEmpty()).isTrue();
 
         parameters = HttpRequestUtils.parseQueryString("");
-        assertThat(parameters.isEmpty(), is(true));
+        assertThat(parameters.isEmpty()).isTrue();
 
         parameters = HttpRequestUtils.parseQueryString(" ");
-        assertThat(parameters.isEmpty(), is(true));
+        assertThat(parameters.isEmpty()).isTrue();
     }
 
     @Test
@@ -58,7 +58,7 @@ public class HttpRequestUtilsTest {
     }
 
     @Test
-    public void getKeyValue_invalid() throws Exception {
+    public void getKeyValue_invalid() {
         Pair pair = HttpRequestUtils.getKeyValue("userId", "=");
         assertThat(pair).isNull();
     }
