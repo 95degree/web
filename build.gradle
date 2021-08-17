@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.11.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     runtimeOnly 'com.h2database:h2:1.4.200'
+    testCompile 'org.assertj:assertj-core:3.6.2'
 }
 
 test {
