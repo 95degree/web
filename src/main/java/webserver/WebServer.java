@@ -3,6 +3,7 @@ package webserver;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import db.DataBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class WebServer {
             Socket connection;
             while ((connection = listenSocket.accept()) != null) {
                 log.debug("소켓 생성" + connection.getInetAddress());
-                RequestHandler requestHandler = new RequestHandler(connection);
+                RequestHandler requestHandler = new RequestHandler(connection, new DataBase());
                 requestHandler.start();
             }
         }
