@@ -13,7 +13,7 @@ public class StringUtils {
 
     public static String extractPath(String requestLine) {
         String[] split = requestLine.split(" ");
-        return PARENT_DIRECTORY + split[REQUEST_LINE_PATH];
+        return split[REQUEST_LINE_PATH];
     }
 
     public static String extractQuery(String requestLine) {

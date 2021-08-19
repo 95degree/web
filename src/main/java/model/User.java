@@ -35,4 +35,8 @@ public class User {
     public String toString() {
         return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
     }
+
+    public static User of(Map<String, String> pair) {
+        return new User(pair.get("userId"), pair.get("password"), pair.get("name"), pair.get("email"));
+    }
 }
