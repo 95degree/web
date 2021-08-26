@@ -28,11 +28,9 @@ public class RequestHandler extends Thread {
     }
 
     private Socket connection;
-    private DataBase dataBase;
 
-    public RequestHandler(Socket connectionSocket, DataBase dataBase) {
+    public RequestHandler(Socket connectionSocket) {
         this.connection = connectionSocket;
-        this.dataBase = dataBase;
     }
 
     public void run() {
