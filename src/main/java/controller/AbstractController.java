@@ -14,7 +14,8 @@ public abstract class AbstractController implements HttpController {
         }
     }
 
-    abstract void doPost();
+    public void doPost(HttpRequest httpRequest, BufferedReader bufferedReader, DataOutputStream dos) throws IOException{
+    }
 
     abstract void doGet();
 }
