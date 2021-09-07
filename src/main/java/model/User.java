@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class User {
     private String userId;
@@ -14,21 +15,28 @@ public class User {
         this.name = name;
         this.email = email;
     }
+    
+    
+    
+    public static User of(Map<String, String> pair) {
+        return new User(pair.get("userId"), pair.get("password"), pair.get("name"), pair.get("email"));
+    }
 
     public String getUserId() {
         return userId;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(password, user.password);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, password, name, email);
     }
 
     @Override
@@ -36,7 +44,4 @@ public class User {
         return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
     }
 
-    public static User of(Map<String, String> pair) {
-        return new User(pair.get("userId"), pair.get("password"), pair.get("name"), pair.get("email"));
-    }
 }
