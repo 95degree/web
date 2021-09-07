@@ -23,5 +23,14 @@ public class HttpRequest {
     public String getUrl() {
         return url;
     }
+
+    @Override
+    public String toString() {
+        return "HttpRequest{" +
+                "httpMethod=" + httpMethod +
+                ", header=" + header +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
 

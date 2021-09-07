@@ -40,5 +40,4 @@ public class GetController extends AbstractController{
             log.error(e.getMessage());
         }
     }
-
 }
