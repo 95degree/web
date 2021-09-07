@@ -47,6 +47,9 @@ public class RequestHandler extends Thread {
             HttpMethod method = HttpMethod.valueOf(requestLine[0]);
             Header header = readHeader(bufferedReader);
             HttpRequest httpRequest = new HttpRequest(method, header, url);
+
+            log.debug("http request  {}", httpRequest);
+
             controller.service(httpRequest, bufferedReader,dos);
 
         } catch (IOException e) {
