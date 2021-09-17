@@ -16,6 +16,10 @@ public class HttpRequest {
         return Integer.parseInt(header.getContentsLength());
     }
 
+    public String getCookies(){
+        return header.getCookies();
+    }
+
     public HttpMethod getHttpMethod(){
         return httpMethod;
     }

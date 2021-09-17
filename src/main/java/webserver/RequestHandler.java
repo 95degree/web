@@ -71,6 +71,9 @@ public class RequestHandler extends Thread {
 
     private AbstractController findController(String url) {
         Set<String> set = controllerMap.keySet();
+        if(url.contains("/css")){
+            return controllerMap.get("/css");
+        }
         if(!set.contains(url)) {
             return controllerMap.get("");
         }

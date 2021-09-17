@@ -18,4 +18,8 @@ public class Header {
     public String getContentsLength(){
         return header.get("Content-Length");
     }
+
+    public String getCookies(){
+        return header.get("Cookie");
+    }
 }

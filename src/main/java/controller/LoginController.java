@@ -18,7 +18,7 @@ public class LoginController extends AbstractController {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @Override
-    public void doPost(HttpRequest httpRequest, BufferedReader bufferedReader, DataOutputStream dos) throws IOException {
+    public void doGet(HttpRequest httpRequest, BufferedReader bufferedReader, DataOutputStream dos) throws IOException {
 
         String body = IOUtils.readData(bufferedReader, httpRequest.getContentsLength());
         User loginUser = User.of(parseQueryString(body));
@@ -56,5 +56,4 @@ public class LoginController extends AbstractController {
             log.error(e.getMessage());
         }
     }
-
 }
