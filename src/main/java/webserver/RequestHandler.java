@@ -6,10 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import controller.AbstractController;
-import controller.CreateUserController;
-import controller.GetController;
-import controller.LoginController;
+import controller.*;
 import model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +22,8 @@ public class RequestHandler extends Thread {
         controllerMap = new HashMap<>();
         controllerMap.put("/user/create", new CreateUserController());
         controllerMap.put("/user/login", new LoginController());
-        controllerMap.put("", new GetController());
+        controllerMap.put("", new DefaultController());
+        controllerMap.put("/css",new CssController());
     }
 
     private Socket connection;

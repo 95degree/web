@@ -19,7 +19,7 @@ public abstract class AbstractController implements HttpController {
     private static final Logger log = LoggerFactory.getLogger(AbstractController.class);
 
     @Override
-        public void service(HttpRequest httpRequest, BufferedReader bufferedReader, DataOutputStream dos) throws IOException {
+    public void service(HttpRequest httpRequest, BufferedReader bufferedReader, DataOutputStream dos) throws IOException {
         HttpMethod httpMethod = httpRequest.getHttpMethod();
         if (httpMethod == POST) {
             doPost(httpRequest, bufferedReader, dos);
