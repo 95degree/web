@@ -5,6 +5,7 @@ web-application-server Study
 박재성님의 [HTTP Web Server 강의](https://www.youtube.com/playlist?list=PLqaSEyuwXkSqV88SwDxuY56xmj6KsmzRN)를 기반으로 진행하는 Web Server Study 
 ## Step
 
+
 1. **[슬라이드 쉐어](https://www.slideshare.net/javajigi/http-web-server?qid=5598469d-8303-4ef0-9fe6-1e1b3d75ffcc&v=&b=&from_search=5)  강의 자료를 통해 요구사항을 보고 스스로 구현을 진행한다.**
 2. **요구사항을 구현했다면 [강의](https://www.youtube.com/playlist?list=PLqaSEyuwXkSqV88SwDxuY56xmj6KsmzRN)를 보고 리팩토링을 진행한다.** 
 3. **다른 사람이 진행한 리팩토링 한 코드를 보고, 코드리뷰를 진행 한다. (질문 포함)**
