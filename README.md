@@ -52,3 +52,5 @@ get post url
 
 
 Map<RequestInfo,Method>
+---
+![image](https://user-images.githubusercontent.com/73640185/136883165-82fecb81-0d67-49f8-87c5-8834a8ea9c62.png)
