@@ -54,3 +54,35 @@ get post url
 Map<RequestInfo,Method>
 ---
 ![image](https://user-images.githubusercontent.com/73640185/136883165-82fecb81-0d67-49f8-87c5-8834a8ea9c62.png)
+---
+요청이 들어온다
+
+RequestInfo로 올바른 메소드를 찾아온다.
+
+invoke해서 나온(문자열,ReturnValue)
+
+파일? 응답(reponse)
+
+
+
+RequestHandlerContatainer를 밖에서 생성해서 넣어줄껀가?
+안에서 생성할껀가?
+
+요청 -> DispatcherServlet의 doService() 호출
+->doDispatch()에서 올바른 HnadlerMethod를 찾는다.
+method를 호출할 수 있는 adapter를 찾는다. adpter로 method실행
+ReturnValueHandler에가 handlerMethod의 결과값으로 적절한
+Reponse생성후 응답
+
+
+질문 adapter가 왜 필요할까?
+simple controller, rest controller 등의 다른 방식으로 처리해야하는 것들이
+존재 하기 때문
+
+return index.html;
+
+String value = invoke;
+
+reponse(value);
+200 300
+
