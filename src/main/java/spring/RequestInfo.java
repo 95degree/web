@@ -1,6 +1,7 @@
 package spring;
 
 import model.HttpMethod;
+import model.HttpRequest;
 
 public class RequestInfo {
     private final String url;
