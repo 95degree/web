@@ -1,6 +1,8 @@
 package model;
 
 
+import spring.RequestInfo;
+
 public class HttpRequest {
     private final HttpMethod httpMethod;
     private final Header header;
@@ -26,6 +28,10 @@ public class HttpRequest {
 
     public String getUrl() {
         return url;
+    }
+
+    public RequestInfo toRequestInfo(){
+        return new RequestInfo(url,httpMethod);
     }
 
     @Override
