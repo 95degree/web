@@ -3,11 +3,11 @@ package spring;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class RequestHandlerContainer {
+public class DispatcherServlet {
 
     private Map<RequestInfo, Method> handlers;
 
-    public RequestHandlerContainer(Map<RequestInfo, Method> handlers) {
+    public DispatcherServlet(Map<RequestInfo, Method> handlers) {
         this.handlers = handlers;
     }
 
