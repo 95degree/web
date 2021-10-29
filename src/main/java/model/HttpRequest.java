@@ -30,10 +30,6 @@ public class HttpRequest {
         return url;
     }
 
-    public RequestInfo toRequestInfo(){
-        return new RequestInfo(url,httpMethod);
-    }
-
     @Override
     public String toString() {
         return "HttpRequest{" +

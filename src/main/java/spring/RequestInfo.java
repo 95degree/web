@@ -12,6 +12,10 @@ public class RequestInfo {
         this.httpMethod = httpMethod;
     }
 
+    public static RequestInfo from (HttpRequest httpRequest){
+        return new RequestInfo(httpRequest.getUrl(), httpRequest.getHttpMethod());
+    }
+
     @Override
     public String toString() {
         return "RequestInfo{" +
