@@ -14,7 +14,7 @@ public class DispatcherServlet {
     }
 
     private Method getHandler(HttpRequest httpRequest){
-        return handlers.get(httpRequest.toRequestInfo());
+        return handlers.get(RequestInfo.from(httpRequest));
     }
 
     @Override
