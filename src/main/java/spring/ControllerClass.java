@@ -7,11 +7,9 @@ import java.util.Map;
 
 public class ControllerClass {
 
-    private final Class<?> aClass;
     private final Methods methods;
 
     public ControllerClass(Class<?> aClass) {
-        this.aClass = aClass;
         this.methods = new Methods(aClass.getDeclaredMethods());
     }
 
