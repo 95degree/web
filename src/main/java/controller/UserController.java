@@ -1,7 +1,10 @@
-package spring;
+package controller;
 
 import db.DataBase;
-import model.User;
+import domain.User;
+import spring.annotation.Controller;
+import spring.annotation.GetMapping;
+import spring.annotation.PostMapping;
 
 @Controller
 public class UserController {

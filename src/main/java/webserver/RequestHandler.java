@@ -3,7 +3,7 @@ package webserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spring.DispatcherServlet;
-import spring.RequestParser;
+import spring.RequestReader;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -27,9 +27,9 @@ public class RequestHandler extends Thread {
         try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
             // TODO 사용자 요청에 대한 처리는 이 곳에 구현하면 된다.
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-            RequestParser requestParser = new RequestParser(bufferedReader);
+            RequestReader requestReader = new RequestReader(bufferedReader);
             DataOutputStream dos = new DataOutputStream(out);
-            dispatcherServlet.doService(requestParser.httpRequest(),dos);
+            dispatcherServlet.doService(requestReader.httpRequest(),dos);
             dos.flush();
         } catch (IOException | InvocationTargetException | IllegalAccessException
                 | NoSuchMethodException | InstantiationException e) {

@@ -1,4 +1,4 @@
-package model;
+package spring.model;
 
 
 public class HttpRequest {

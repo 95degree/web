@@ -1,4 +1,4 @@
-package spring.responseHeader;
+package spring.viewResolver;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -22,7 +22,7 @@ public class ViewResolver {
 
     private DataOutputStream create302(String redirectUrl, DataOutputStream dos) throws IOException {
         dos.writeBytes("HTTP/1.1 302 Found \r\n");
-        dos.writeBytes("Location: " + redirectUrl +  "\r\n");
+        dos.writeBytes("Location: " + redirectUrl + "\r\n");
         dos.writeBytes("\r\n");
 
         return dos;

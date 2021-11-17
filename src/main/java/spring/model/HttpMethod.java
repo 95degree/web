@@ -1,9 +1,6 @@
-package model;
+package spring.model;
 
 public enum HttpMethod {
     GET,
     POST,
-    PUT,
-    PATCH,
-    DELETE
 }

@@ -1,7 +1,4 @@
-package spring;
-
-import model.HttpMethod;
-import model.HttpRequest;
+package spring.model;
 
 import java.util.Objects;
 

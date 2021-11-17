@@ -1,10 +1,12 @@
 package spring;
 
-import model.HttpMethod;
-import model.HttpRequest;
-import model.User;
+import spring.model.HttpMethod;
+import spring.model.HttpRequest;
+import domain.User;
+import spring.model.RequestInfo;
 import org.reflections.Reflections;
-import spring.responseHeader.ViewResolver;
+import spring.annotation.Controller;
+import spring.viewResolver.ViewResolver;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -43,7 +45,7 @@ public class DispatcherServlet {
     }
 
     private Set<Class<?>> searchControllerClass() {
-        Reflections reflections = new Reflections("spring");
+        Reflections reflections = new Reflections("controller");
         return reflections.getTypesAnnotatedWith(Controller.class);
     }
 

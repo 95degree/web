@@ -1,10 +1,8 @@
 package spring;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import model.Body;
-import model.Header;
-import model.HttpMethod;
-import model.HttpRequest;
+import spring.model.Header;
+import spring.model.HttpMethod;
+import spring.model.HttpRequest;
 import util.IOUtils;
 
 import java.io.BufferedReader;
@@ -12,14 +10,14 @@ import java.io.IOException;
 
 import static util.StringUtils.split;
 
-public class RequestParser {
+public class RequestReader {
 
     private final BufferedReader bufferedReader;
     private static final int HTTP_METHOD_INDEX = 0;
     private static final int URL_INDEX = 1;
     private static final String NULL_BODY = " ";
 
-    public RequestParser(BufferedReader bufferedReader) {
+    public RequestReader(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
     }
 
@@ -29,10 +27,10 @@ public class RequestParser {
         String url = requestLine[URL_INDEX];
         Header header = readHeader(bufferedReader);
         String body = NULL_BODY;
-        if(httpMethod == HttpMethod.POST){
-            body = IOUtils.readData(bufferedReader,header.getContentLength());
+        if (httpMethod == HttpMethod.POST) {
+            body = IOUtils.readData(bufferedReader, header.getContentLength());
         }
-        return new HttpRequest(httpMethod, header ,url, body);
+        return new HttpRequest(httpMethod, header, url, body);
     }
 
     private Header readHeader(BufferedReader bufferedReader) throws IOException {

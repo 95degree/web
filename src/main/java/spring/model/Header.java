@@ -1,4 +1,4 @@
-package model;
+package spring.model;
 
 import java.util.Map;
 
