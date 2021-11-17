@@ -15,10 +15,8 @@ public class User {
         this.name = name;
         this.email = email;
     }
-    
-    
-    
-    public static User of(Map<String, String> pair) {
+
+    public static User from(Map<String, String> pair) {
         return new User(pair.get("userId"), pair.get("password"), pair.get("name"), pair.get("email"));
     }
 
