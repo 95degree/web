@@ -1,7 +1,5 @@
 package spring;
 
-import org.reflections.Reflections;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -13,9 +11,8 @@ public class ControllerClasses {
 
     private final Set<ControllerClass> controllerClasses;
 
-    public ControllerClasses() {
-        Reflections reflections = new Reflections("spring");
-        this.controllerClasses = reflections.getTypesAnnotatedWith(Controller.class).stream()
+    public ControllerClasses(Set<Class<?>> classes) {
+        this.controllerClasses = classes.stream()
                 .map(ControllerClass::new)
                 .collect(Collectors.toSet());
     }
