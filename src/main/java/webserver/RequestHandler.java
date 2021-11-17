@@ -1,35 +1,23 @@
 package webserver;
 
-import java.io.*;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import controller.*;
-import model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import spring.DispatcherServlet;
+import spring.RequestParser;
 
-import static util.StringUtils.*;
+import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.net.Socket;
 
 public class RequestHandler extends Thread {
     private static final Logger log = LoggerFactory.getLogger(RequestHandler.class);
 
-    private static final Map<String, AbstractController> controllerMap;
-    
-    static {
-        controllerMap = new HashMap<>();
-        controllerMap.put("/user/create", new CreateUserController());
-        controllerMap.put("/user/login", new LoginController());
-        controllerMap.put("", new DefaultController());
-        controllerMap.put("/css",new CssController());
-    }
+    private final Socket connection;
+    private final DispatcherServlet dispatcherServlet;
 
-    private Socket connection;
-
-    public RequestHandler(Socket connectionSocket) {
-        this.connection = connectionSocket;
+    public RequestHandler(Socket connection, DispatcherServlet dispatcherServlet) {
+        this.connection = connection;
+        this.dispatcherServlet = dispatcherServlet;
     }
 
     public void run() {
@@ -39,43 +27,13 @@ public class RequestHandler extends Thread {
         try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
             // TODO 사용자 요청에 대한 처리는 이 곳에 구현하면 된다.
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-            String line = bufferedReader.readLine();
-            String[] requestLine = split(line, " ");
-            String url = requestLine[1];
-            AbstractController controller = findController(url);
+            RequestParser requestParser = new RequestParser(bufferedReader);
             DataOutputStream dos = new DataOutputStream(out);
-            HttpMethod method = HttpMethod.valueOf(requestLine[0]);
-            Header header = readHeader(bufferedReader);
-            HttpRequest httpRequest = new HttpRequest(method, header, url);
-
-            log.debug("http request  {}", httpRequest);
-
-            controller.service(httpRequest, bufferedReader,dos);
-
-        } catch (IOException e) {
+            dispatcherServlet.doService(requestParser.httpRequest(),dos);
+            dos.flush();
+        } catch (IOException | InvocationTargetException | IllegalAccessException
+                | NoSuchMethodException | InstantiationException e) {
             log.error(e.getMessage());
         }
-    }
-
-    private Header readHeader(BufferedReader bufferedReader) throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        String readLine;
-        while (!(readLine = bufferedReader.readLine()).equals("")) {
-
-            stringBuilder.append(readLine).append("\n");
-        }
-        return Header.from(stringBuilder.toString());
-    }
-
-    private AbstractController findController(String url) {
-        Set<String> set = controllerMap.keySet();
-        if(url.contains("/css")){
-            return controllerMap.get("/css");
-        }
-        if(!set.contains(url)) {
-            return controllerMap.get("");
-        }
-
-        return controllerMap.get(url);
     }
 }
