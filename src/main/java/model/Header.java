@@ -6,6 +6,7 @@ import static util.HttpRequestUtils.parseHeaders;
 
 public class Header {
     private Map<String,String> header;
+    private static final String CONTENT_LENGTH = "Content-Length";
 
     private Header(Map<String, String> header) {
         this.header = header;
@@ -15,11 +16,7 @@ public class Header {
         return new Header(parseHeaders(headerLines));
     }
 
-    public String getContentsLength(){
-        return header.get("Content-Length");
-    }
-
-    public String getCookies(){
-        return header.get("Cookie");
+    public int getContentLength(){
+        return Integer.parseInt(header.get(CONTENT_LENGTH));
     }
 }
