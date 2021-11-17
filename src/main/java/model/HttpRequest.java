@@ -1,33 +1,29 @@
 package model;
 
 
-import spring.RequestInfo;
-
 public class HttpRequest {
     private final HttpMethod httpMethod;
     private final Header header;
     private final String url;
+    private final String body;
 
-    public HttpRequest(HttpMethod httpMethod,Header header, String url) {
+    public HttpRequest(HttpMethod httpMethod, Header header, String url, String body) {
         this.httpMethod = httpMethod;
         this.header = header;
         this.url = url;
+        this.body = body;
     }
 
-    public int getContentsLength() {
-        return Integer.parseInt(header.getContentsLength());
-    }
-
-    public String getCookies(){
-        return header.getCookies();
-    }
-
-    public HttpMethod getHttpMethod(){
+    public HttpMethod getHttpMethod() {
         return httpMethod;
     }
 
     public String getUrl() {
         return url;
+    }
+
+    public String getBody() {
+        return body;
     }
 
     @Override
