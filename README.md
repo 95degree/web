@@ -15,7 +15,8 @@ web-application-server Study
 ## Step 2
 1. 미션을 완료했으면 Spring mvc 구조를 학습해본다.
 2. 학습 후 간단히 구현 해 볼 수 있는 선에서 Spring mvc를 순수 자바로 만들어본다.
-3. 꼭 필요하지 않은 부분은 구현하지 않고 진행한다.(@Component, DI 컨테이너 등등)
+3. 필요하지 않은 부분은 구현하지 않고 진행한다.(@Component, DI 컨테이너, @ResponseBody 등등)
+4. 회원가입시 User model 생성은 dispathcerServlet에서 진행하기
 ---
 ### 진행 상황
 1. @GetMapping, @PostMapping, @RequestMapping, @Controller등 필요한 어노테이션 구현
@@ -23,5 +24,6 @@ web-application-server Study
 3. 가져온 클래스에 @GetMapping, @PostMapping처럼 @RequestMapping이 붙어 있는 어노테이션이 붙어 있는 메소드를 찾기
 4. dispatcherServlet은 싱글톤으로 구현
 5. dispatcherServlet이 찾은 메소드를 invoke하고 올바른 view를 찾아 Response를 만든다.
-6. 현재 get이나 회원가입은 가능하나 css 적용 X
-7. 이후에 css 적용 문제 해결 및 로그인 기능 추가 
+6. 
+7. 현재 get이나 회원가입은 가능하나 css 적용 X
+8. 이후에 css 적용 문제 해결 및 로그인 기능 추가 
